@@ -24,7 +24,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b79ebe4a2022a2a46a64e0f318180210, type: 2}
   comboMoves:
   - name: 
-    comboString: 
+    comboString: 77000000610000007300000064000000
     attack: {fileID: 11400000, guid: 142a0b0a0d25c4a4d8f73bfcea5844a7, type: 2}
   - name: 
     comboString: 110100001201000012010000

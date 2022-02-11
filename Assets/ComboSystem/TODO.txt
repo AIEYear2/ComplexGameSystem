@@ -1,2 +1,0 @@
-2: Rewrite damage to take a damage... ScriptableObject?
-3: Get key listening to work

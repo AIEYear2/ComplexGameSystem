@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &197359377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,8 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebcbaa178a6c50a4598d78b95327935d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invulnerabilityFrames:
-    max: 0.5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSet: {fileID: 11400000, guid: 2ce3bb64ff59dc14c9f4919f261d0779, type: 2}
+  anim: {fileID: 868103541}
   inputs: 110100001201000013010000140100007a00000078000000
   hitColliderCount: 1
   comboClearTimer:
@@ -355,7 +354,6 @@ MonoBehaviour:
   hitableMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  anim: {fileID: 868103541}
 --- !u!95 &868103541
 Animator:
   serializedVersion: 3

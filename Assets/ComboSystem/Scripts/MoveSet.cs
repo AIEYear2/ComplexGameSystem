@@ -47,6 +47,46 @@ namespace ComboSystem
             }
         }
 
+        public void AddSimpleAttack(string name, KeyCode attackKey, Attack attack)
+        {
+            AddSimpleAttack(name, attackKey, new Attack[1] { attack });
+        }
+        public void AddSimpleAttack(string name, KeyCode attackKey, Attack[] attacks)
+        {
+            SimpleMove[] tmpArr = new SimpleMove[basicMoves.Length + 1];
+
+            for (int x = 0; x < basicMoves.Length; ++x)
+                tmpArr[x] = basicMoves[x];
+
+            tmpArr[basicMoves.Length] = new SimpleMove(name, attackKey, attacks);
+
+            basicMoves = new SimpleMove[tmpArr.Length];
+            for (int x = 0; x < basicMoves.Length; ++x)
+                basicMoves[x] = tmpArr[x];
+        }
+
+        public void AddComboAttack(string name, KeyCode[] attackKeys, Attack attack)
+        {
+            ComboMove[] tmpArr = new ComboMove[comboMoves.Length + 1];
+
+            int offset = 0;
+            for(int x = 0; x < tmpArr.Length; ++x)
+            {
+                if ((offset == 0 && x == comboMoves.Length) || attackKeys.Length > comboMoves[x].ComboStringLength) 
+                {
+                    tmpArr[x] = new ComboMove(name, attack, attackKeys);
+                    offset = -1;
+                    continue;
+                }
+
+                tmpArr[x] = comboMoves[x - offset];
+            }
+
+            comboMoves = new ComboMove[tmpArr.Length];
+            for (int x = 0; x < comboMoves.Length; ++x)
+                comboMoves[x] = tmpArr[x];
+        }
+
         public virtual int ProcessCombo(KeyCode[] curCombo, ref Attack basicAttack)
         {
             // Grabs the basic attack from basicMoves if there is one
@@ -106,8 +146,9 @@ namespace ComboSystem
             {
             }
 
-            public SimpleMove(KeyCode attackKey, Attack[] attack)
+            public SimpleMove(string name, KeyCode attackKey, Attack[] attack)
             {
+                this.name = name;
                 this.attackKey = attackKey;
                 this.attack = attack;
             }
@@ -142,8 +183,9 @@ namespace ComboSystem
             {
             }
 
-            public ComboMove(Attack attack, KeyCode[] comboString)
+            public ComboMove(string name, Attack attack, KeyCode[] comboString)
             {
+                this.name = name;
                 this.attack = attack;
                 this.comboString = comboString;
             }

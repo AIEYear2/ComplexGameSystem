@@ -10,17 +10,17 @@ namespace ComboSystem
         public IAttacker attackManager = null;
 
         public MoveSet moveSet = null;
+        [SerializeField]
+        protected Animator anim;
         public KeyCode[] inputs = new KeyCode[0];
+
+        [Space(10)]
         [SerializeField]
         protected int hitColliderCount = 1;
         [SerializeField]
         protected Timer comboClearTimer = new Timer(0.7f);
         [SerializeField]
         protected LayerMask hitableMask = new LayerMask();
-
-        [Space(10)]
-        [SerializeField]
-        protected Animator anim;
 
         protected PlayableGraph playableGraph;
         protected AnimationPlayableOutput playableOutput;
@@ -126,11 +126,7 @@ namespace ComboSystem
         protected virtual void BeginAttack()
         {
             currentAttackTimer.SetMax(curAttack.AttackLength, true);
-
-            // Connect the Playable to an output
-            playableOutput.SetSourcePlayable(curAttack.GetClip());
-            // Plays the Graph.
-            playableGraph.Play();
+            SetActtackAnim(curAttack.GetClip());
         }
         // De-initializes the attack
         protected virtual void EndAttack()
@@ -140,7 +136,24 @@ namespace ComboSystem
             curAttack = null;
         }
 
-        private void OnDrawGizmos()
+        public void SetActtackAnim(AnimationClipPlayable anim)
+        {
+            // Connect the Playable to an output
+            Playable tmp = playableOutput.GetSourcePlayable();
+            
+            if(tmp.IsValid())
+                tmp.SetTime(0.0);
+
+            playableOutput.SetSourcePlayable(anim);
+            // Plays the Graph.
+            playableGraph.Play();
+        }
+        public void SetActtackAnim(AnimationClip anim)
+        {
+            SetActtackAnim(AnimationClipPlayable.Create(playableGraph, anim));
+        }
+
+            private void OnDrawGizmos()
         {
             if (!curAttack)
                 return;

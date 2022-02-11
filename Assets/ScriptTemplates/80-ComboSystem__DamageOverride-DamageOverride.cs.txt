@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using ComboSystem;
+
+
+[CreateAssetMenu(menuName = "ComboSystem/DamageTypes/#SCRIPTNAME#")]
+public class #SCRIPTNAME# : DamageObject
+{
+	
+}

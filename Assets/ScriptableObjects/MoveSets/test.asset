@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3af4d5cd678f3f4d89a2dcec9e3065d, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: 
+  basicMoves:
+  - name: Punch
+    attackKey: 122
+    attack:
+    - {fileID: 11400000, guid: 6f84670882e60e54991703e757032cb4, type: 2}
+    - {fileID: 11400000, guid: 150536b9cfb959a4c8e077779ee19bf4, type: 2}
+  - name: Kick
+    attackKey: 120
+    attack:
+    - {fileID: 11400000, guid: b79ebe4a2022a2a46a64e0f318180210, type: 2}
+  comboMoves:
+  - name: 
+    comboString: 
+    attack: {fileID: 11400000, guid: 142a0b0a0d25c4a4d8f73bfcea5844a7, type: 2}
+  - name: 
+    comboString: 110100001201000012010000
+    attack: {fileID: 11400000, guid: ad59092f9eac84e4b9031f752329b5f7, type: 2}
+  - name: 
+    comboString: 7a00000078000000
+    attack: {fileID: 11400000, guid: 150536b9cfb959a4c8e077779ee19bf4, type: 2}

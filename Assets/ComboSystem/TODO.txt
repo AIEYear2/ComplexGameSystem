@@ -1,0 +1,4 @@
+1: Create 2D turn-based combat game
+1.1: create core combat loop
+1.2: develop the combo system
+1.3: Develop the UI
